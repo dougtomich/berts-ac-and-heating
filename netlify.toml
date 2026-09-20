@@ -2,6 +2,11 @@
   publish = "."
   command = ""
 
+[[redirects]]
+  from = "/es"
+  to = "/es/"
+  status = 301
+
 [[headers]]
   for = "/*.css"
   [headers.values]

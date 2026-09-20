@@ -88,7 +88,8 @@ a {
 
 a:focus-visible,
 .btn-call:focus-visible,
-.header-phone:focus-visible {
+.header-phone:focus-visible,
+.lang a:focus-visible {
   outline: 3px solid var(--paper);
   outline-offset: 3px;
 }
@@ -120,10 +121,14 @@ a:focus-visible,
 
 .header-inner {
   min-height: var(--header-h);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "brand phone"
+    "lang lang";
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+  column-gap: var(--space-3);
+  row-gap: 0;
   padding-block: var(--space-2);
 }
 
@@ -133,6 +138,7 @@ a:focus-visible,
   gap: var(--space-2);
   text-decoration: none;
   min-width: 0;
+  grid-area: brand;
 }
 
 .brand-mark {
@@ -180,10 +186,72 @@ a:focus-visible,
   font-size: var(--text-sm);
   text-decoration: none;
   white-space: nowrap;
+  grid-area: phone;
+  justify-self: end;
 }
 
 .header-phone svg {
   color: var(--accent);
+}
+
+.lang {
+  grid-area: lang;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  min-height: 48px;
+}
+
+.lang a,
+.lang span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 10px 0 0;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.lang span[aria-current="page"] {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.lang a {
+  color: var(--accent);
+}
+
+.lang-sep {
+  color: var(--muted);
+  padding: 0 4px;
+  font-weight: 600;
+}
+
+.footer-lang {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.footer-lang a {
+  color: var(--accent);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.footer-lang span[aria-current="page"] {
+  color: var(--paper);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .hero {
@@ -493,6 +561,15 @@ a:focus-visible,
 }
 
 @media (min-width: 640px) {
+  .header-inner {
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas: "brand lang phone";
+  }
+
+  .lang {
+    justify-self: end;
+  }
+
   .svc-grid {
     grid-template-columns: 1fr 1fr;
   }

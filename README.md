@@ -8,6 +8,8 @@ Visible brand: **Bert’s A/C and Heating**
 Optional line on the site: “Keeping Cypress cool.”  
 Possible later domain: `keepcypresscool.com`
 
+English is the home page. Spanish is a full connected mirror at `es/index.html` (`/es/`). Same phone, same services. Header and footer switch: **English / Español**.
+
 ## Open locally
 
 No build step. No npm.
